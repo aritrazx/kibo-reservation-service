@@ -3,16 +3,19 @@ package com.kibo.reservation.controller;
 import com.kibo.reservation.dto.*;
 import com.kibo.reservation.service.HoldService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
-@RequiredArgsConstructor
 public class HoldController {
     private final HoldService holdService;
     private final HoldProperties properties;
+
+    public HoldController(HoldService holdService, HoldProperties properties) {
+        this.holdService = holdService;
+        this.properties = properties;
+    }
 
     @PostMapping("/drops/{dropId}/holds")
     public ResponseEntity<HoldResponse> create(

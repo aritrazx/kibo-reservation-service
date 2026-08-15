@@ -1,15 +1,14 @@
 package com.kibo.reservation.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
 
 import java.time.Instant;
 import java.util.UUID;
 
 @Entity
 @Table(name = "holds")
-@Getter @Setter @NoArgsConstructor
 public class Hold {
+    public Hold() {}
     @Id
     @Column(length = 36)
     private String id;
@@ -50,4 +49,32 @@ public class Hold {
         h.expiresAt = expiresAt;
         return h;
     }
+
+    // getters/setters
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
+
+    public Drop getDrop() { return drop; }
+    public void setDrop(Drop drop) { this.drop = drop; }
+
+    public String getCustomerId() { return customerId; }
+    public void setCustomerId(String customerId) { this.customerId = customerId; }
+
+    public int getQuantity() { return quantity; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+
+    public HoldStatus getStatus() { return status; }
+    public void setStatus(HoldStatus status) { this.status = status; }
+
+    public Instant getExpiresAt() { return expiresAt; }
+    public void setExpiresAt(Instant expiresAt) { this.expiresAt = expiresAt; }
+
+    public Instant getCreatedAt() { return createdAt; }
+    public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
+
+    public Instant getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(Instant updatedAt) { this.updatedAt = updatedAt; }
+
+    public long getVersion() { return version; }
+    public void setVersion(long version) { this.version = version; }
 }

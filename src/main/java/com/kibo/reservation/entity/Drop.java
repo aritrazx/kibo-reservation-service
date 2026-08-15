@@ -1,14 +1,13 @@
 package com.kibo.reservation.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
 
 import java.time.Instant;
 
 @Entity
 @Table(name = "drops")
-@Getter @Setter @NoArgsConstructor
 public class Drop {
+    public Drop() {}
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -29,4 +28,26 @@ public class Drop {
 
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
+
+    // getters/setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public int getTotalUnits() { return totalUnits; }
+    public void setTotalUnits(int totalUnits) { this.totalUnits = totalUnits; }
+
+    public int getAvailableUnits() { return availableUnits; }
+    public void setAvailableUnits(int availableUnits) { this.availableUnits = availableUnits; }
+
+    public Instant getStartTime() { return startTime; }
+    public void setStartTime(Instant startTime) { this.startTime = startTime; }
+
+    public Instant getCreatedAt() { return createdAt; }
+    public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
+
+    public Instant getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(Instant updatedAt) { this.updatedAt = updatedAt; }
 }

@@ -1,6 +1,5 @@
 package com.kibo.reservation.cache;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -8,10 +7,13 @@ import java.time.Duration;
 import java.util.Optional;
 
 @Component
-@RequiredArgsConstructor
 public class AvailabilityCache {
     private final StringRedisTemplate redis;
     private static final Duration TTL = Duration.ofSeconds(30);
+
+    public AvailabilityCache(StringRedisTemplate redis) {
+        this.redis = redis;
+    }
 
     public Optional<Integer> get(Long dropId) {
         try {

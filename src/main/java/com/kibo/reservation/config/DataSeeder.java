@@ -2,15 +2,17 @@ package com.kibo.reservation.config;
 
 import com.kibo.reservation.entity.Drop;
 import com.kibo.reservation.repository.DropRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import java.time.Instant;
 
 @Component
-@RequiredArgsConstructor
 public class DataSeeder implements CommandLineRunner {
     private final DropRepository repository;
+
+    public DataSeeder(DropRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public void run(String... args) {

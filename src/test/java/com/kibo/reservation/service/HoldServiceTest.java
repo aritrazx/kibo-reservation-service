@@ -6,6 +6,7 @@ import com.kibo.reservation.dto.CreateHoldRequest;
 import com.kibo.reservation.entity.Drop;
 import com.kibo.reservation.exception.InsufficientInventoryException;
 import com.kibo.reservation.repository.*;
+import com.kibo.reservation.service.impl.HoldServiceImpl;
 import org.junit.jupiter.api.*;
 import org.mockito.*;
 
@@ -19,14 +20,14 @@ class HoldServiceTest {
     @Mock HoldRepository holds;
     @Mock OutboxEventRepository outbox;
     @Mock AvailabilityCache cache;
-    @InjectMocks HoldService service;
+    @InjectMocks HoldServiceImpl service;
 
     @BeforeEach
     void setup() {
         MockitoAnnotations.openMocks(this);
         ObjectMapper mapper = new ObjectMapper();
         mapper.findAndRegisterModules();
-        service = new HoldService(drops, holds, outbox, cache, mapper);
+        service = new HoldServiceImpl(drops, holds, outbox, cache, mapper);
     }
 
     @Test
